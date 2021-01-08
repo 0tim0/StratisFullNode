@@ -235,7 +235,7 @@ namespace Stratis.Bitcoin.Features.Wallet.Services
                     {
                         // Count only unique transactions and limit it to MaxHistoryItemsPerAccount.
                         int processedTransactions = uniqueProcessedTxIds.Count;
-                        if (processedTransactions >= MaxHistoryItemsPerAccount)
+                        if (processedTransactions >= Math.Max(request.Take ?? 0,  MaxHistoryItemsPerAccount))
                         {
                             break;
                         }
